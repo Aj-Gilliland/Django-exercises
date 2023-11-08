@@ -20,7 +20,7 @@ def delete_contact(name):
         return whole_contact
 
 def all_contacts():
-        return Contact.objects.all()
+        return Contact.objects.all()  
 
 def find_contact_by_name(name):
        try:
