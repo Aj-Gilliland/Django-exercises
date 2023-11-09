@@ -30,47 +30,48 @@ class BaseCamper(models.Model):
 #methods (see params for method ideas) at the very least the project requires that it add, update, and delete the people and all their data
 
 #!!!add!!!
-def create_camper(first_name, last_name, leadership_team, module_status, leave_left_hour):
+def create_camper(first_name, last_name, leadership_team, module_status, leave_left_hour):#tested
     entry = BaseCamper(first_name=first_name, last_name=last_name, leadership_team=leadership_team, module_status=module_status, leave_left_hour=leave_left_hour)     
     entry.save()
     return entry
 
 #!!!update functions drawn out into the 3 things you should be able to change (team,mod,and leave)!!!
-def update_module(id, new_module_status):
+def update_module(id, new_module_status):#tested
     person = BaseCamper.objects.get(id=id)
     person.module_status = new_module_status
     person.save()
     return person
 
-def update_team(id, new_leadership_team):
+def update_team(id, new_leadership_team):#tested
     person = BaseCamper.objects.get(id=id)
     person.leadership_team = new_leadership_team
     person.save()
     return person
 
-def update_leave(id, new_leave_left_hour):
+def update_leave(id, new_leave_left_hour):#tested
     person = BaseCamper.objects.get(id=id)
     person.leave_left_hour = new_leave_left_hour
     person.save()
     return person
 
 #!!!delete!!!
-def delete_camper(id):
+def delete_camper(id):#tested
     entry = BaseCamper.objects.get(id=id)
     entry.delete()
-    return None
+    return entry
 
 
 
 #extras I might expand on into a admin panel later
-def all_campers():#not for display in individuals screens 
+
+def all_campers():
     return BaseCamper.objects.all()
 
-def team_lister(team):
+def team_lister(team):#tested
     return BaseCamper.objects.filter(leadership_team = team)
 
-def find_id_by_name(first_name,last_name):
-    person = BaseCamper.objects.filter(first_name=first_name, last_name=last_name)
+def find_id_by_name(first_name,last_name):#tested
+    person = BaseCamper.objects.get(first_name=first_name, last_name=last_name)
     return person.id
 
 
